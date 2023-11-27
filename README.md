@@ -1,5 +1,7 @@
 # Welcome to the Order
 
+<img src="./resources/paladin-intro.jpg" height="500">
+
 This repo is where I will store write-ups for practice machines for CTF, any public write-ups I am allowed to share, and any projects I am working on for practicing defense or offense
 
 ## Sword and Board
@@ -8,9 +10,13 @@ This section will be any projects I may work on that involve both offense and de
 
 ## Press the Offensive! (Smite)
 
+<img src="./resources/smite.gif" height="300">
+
 I will store anything here that is related to offensive security - this includes CTF write-ups, classwork write-ups (for things like studying for PNPT), any public pentests I'm allowed to share.
 
 ## Stop the Advance! (Shield of Faith)
+
+<img src="./resources/holyshield.gif" height="300">
 
 This section will be projects relating solely to defensive measures, such as hardening efforts, SIEM practice, and other things of this nature.
 
