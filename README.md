@@ -6,6 +6,8 @@ This repo is where I will store write-ups for practice machines for CTF, any pub
 
 ## Sword and Board
 
+<img src="./resources/swordandboard.gif" height="250">
+
 This section will be any projects I may work on that involve both offense and defense, something that shows skills in purple team type skills and exercises
 
 ## Press the Offensive! (Smite)
