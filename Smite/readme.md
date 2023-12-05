@@ -8,3 +8,4 @@ Going forward I will start putting my write ups here. I have done quite a few ma
 2. I will always include an executive summary at the start to give a brief overview of the path I took, and then go into details with screen captures.
 3. I will end with recommendations to mitigate the exploits found, and include anything I found that prevented me from doing what I wanted to do (AV, shell removal) as in the real world these could alert a user that something malicious is happening and is a good thing to show.
 4. Standalone machines will not be represented as full testing of the system as there may be other things in the system to find, and my goal with those are to practice what is meant to be practice and not be exhaustive as time is limited when it comes to self study.
+5. I will also include towards the end anything I learned if this was a practice/lesson, besides the obviously already explained exploit
