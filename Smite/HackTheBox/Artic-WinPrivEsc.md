@@ -91,3 +91,26 @@ Exploit:
 ![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/c1761df7-8ef5-4244-95ea-2299cb66335d)
 
 With this exploit successfully completed, I was able to gain full access to the machine.
+
+
+## Suggested Mitigations and Remediations
+
+### Cold Fusion 8:
+
+This exploit is a flaw in the specific version of Cold Fusion and there are no mitigations to stop this. You can however un-expose the directory to the outside world to make it harder to find what exploit could work. 
+
+Recommended Remedation Action: upgrade to the latest version of Cold Fusion. This is a known vulnerability and has been patched in newer versions of the software.
+
+### MS10_092:
+
+This exploit uses a vulnerability in the Windows OS kernel to gain access to system level privileges. No mitigations to try and prevent this are available as this is a flaw within the system.
+
+Recommended Remedation Actions: update the system with the newest Windows Updates to remove the flaw. Also upgrading the Windows Server Version is strongly recommended due to the end of support of Windows Server 2008 R2: https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-server-eos-faq/end-of-support-windows-server-2008-2008r2
+
+## Lessons Learned (outside of the actual exploit)
+
+The biggest thing learned to know for future engagements is that when you see the specific error shown below, it means that your meterpreter shell is running on a 32 bit process, and needs to be migrated to a 64 bit process to execute.
+
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/a8edd397-f9bd-42f1-9a6e-aa82d152f64d)
+
+Another smaller lesson learned is that sometimes the shell used in an exploit can make or break the exploit. I tried to force a meterpreter shell with the initial exploit of Cold Fusion, and could not get the exploit to work as intended, when in reality, the payload that was default for the exploit worked fine, and I could upgrade my shell to meterpreter once gaining the initial access.
