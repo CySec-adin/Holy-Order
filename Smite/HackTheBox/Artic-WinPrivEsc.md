@@ -99,13 +99,13 @@ With this exploit successfully completed, I was able to gain full access to the 
 
 This exploit is a flaw in the specific version of Cold Fusion and there are no mitigations to stop this. You can however un-expose the directory to the outside world to make it harder to find what exploit could work. 
 
-Recommended Remedation Action: upgrade to the latest version of Cold Fusion. This is a known vulnerability and has been patched in newer versions of the software.
+Recommended Remediation Action: upgrade to the latest version of Cold Fusion. This is a known vulnerability and has been patched in newer versions of the software.
 
 ### MS10_092:
 
 This exploit uses a vulnerability in the Windows OS kernel to gain access to system level privileges. No mitigations to try and prevent this are available as this is a flaw within the system.
 
-Recommended Remedation Actions: update the system with the newest Windows Updates to remove the flaw. Also upgrading the Windows Server Version is strongly recommended due to the end of support of Windows Server 2008 R2: https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-server-eos-faq/end-of-support-windows-server-2008-2008r2
+Recommended Remediation Actions: update the system with the newest Windows Updates to remove the flaw. Also upgrading the Windows Server Version is strongly recommended due to the end of support of Windows Server 2008 R2: https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-server-eos-faq/end-of-support-windows-server-2008-2008r2
 
 ## Lessons Learned (outside of the actual exploit)
 
